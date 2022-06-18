@@ -8,6 +8,8 @@ const UserInfo = () => {
   const { githubUser } = React.useContext(GithubContext); //oluşturduğumuz context çağırıyoruz
   const { public_repos, followers, following, public_gists } = githubUser; //destructing
 
+  //dinamik bir şekilde oluşturduğumuz ve navbar göstereceğimiz değerler aşağıda ki şekilde array ve obje olarak ayarlıyoruz.
+
   const items = [
     {
       id: 1,
@@ -39,6 +41,7 @@ const UserInfo = () => {
     },
   ];
 
+  //navbar 'da göstereceğimiz değerleri map ettik.
   return (
     <section className="section">
       <Wrapper className="section-center">
@@ -53,7 +56,7 @@ const UserInfo = () => {
     </section>
   );
 };
-
+//elimizde olan item değerleri için bir fonk oluşturduk.
 const Item = ({ icon, label, value, color }) => {
   return (
     <article className="item">
