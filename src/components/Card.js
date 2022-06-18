@@ -39,7 +39,7 @@ const Card = () => {
         </p>
         <a href={`https://www.google.com.tr`}>
           <MdLink></MdLink>
-          www.oguzhanorhan.com
+          www.oguzhanorhan.coms
         </a>
       </div>
     </Wrapper>
