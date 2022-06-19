@@ -2,6 +2,7 @@ import React from 'react';
 import { GithubContext } from '../context/context';
 import styled from 'styled-components';
 import { MdBusiness, MdLocationOn, MdLink } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 
 // ** Ana sayfamdaki kullanıcı componenti..
 
@@ -23,7 +24,7 @@ const Card = () => {
         <img src={avatar_url} alt={name} />
         <div>
           <h4>{name}</h4>
-          <p>@{twitter_username}oguzhan orhan</p>
+          <p>@{twitter_username}</p>
         </div>
         <a href={html_url}>follow</a>
       </header>
@@ -37,9 +38,9 @@ const Card = () => {
           <MdLocationOn />
           {location}
         </p>
-        <a href={`https://www.google.com.tr`}>
+        <a href={`https://${blog}`}>
           <MdLink></MdLink>
-          www.oguzhanorhan.coms
+          {blog}
         </a>
       </div>
     </Wrapper>
