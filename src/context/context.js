@@ -32,13 +32,27 @@ const GithubProvider = ({ children }) => {
       const { login, followers_url } = response.data;
 
       //repos most popular language
-      axios(`${rootUrl}/users/${login}/repos?per_page=100`).then((response) =>
-        setRepo(response.data)
-      );
-      //followers most used language
-      axios(`${followers_url}?per_page=100`).then((response) =>
-        setFollowers(response.data)
-      );
+      //  await axios(`${rootUrl}/users/${login}/repos?per_page=100`).then((response) =>
+      //     setRepo(response.data)
+      //   );
+      //   //followers most used language
+      // await  axios(`${followers_url}?per_page=100`).then((response) =>
+      //     setFollowers(response.data)
+      //   );
+      await Promise.allSettled([
+        axios(`${rootUrl}/users/${login}/repos?per_page=100`),
+
+        axios(`${followers_url}?per_page=100`),
+      ]).then((results) => {
+        const [repos, followers] = results;
+        const status = 'fulfilled';
+        if (repos.status === status) {
+          setRepo(repos.value.data);
+        }
+        if (followers.status === status) {
+          setFollowers(followers.value.data);
+        }
+      });
     } else {
       toggleError(true, 'there is no user with that username');
     }
