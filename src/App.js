@@ -12,6 +12,7 @@ function App() {
             element={
               //privateRoute
               <Dashboard />
+              //privateRoute ile ilgili sıkıntı var o çözülecek.
             }
           />
           <Route path="login" element={<Login />} />
