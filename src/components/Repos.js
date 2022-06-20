@@ -9,14 +9,15 @@ import { Pie3D, Column3D, Bar3D, Doughnut2D } from './Charts';
 const Repos = () => {
   const { repos } = React.useContext(GithubContext);
   const languages = repos.reduce((total, item) => {
-    const { language, stargazers_count } = item;
+    const { language, stargazers_count } = item; //language = html,js,css,...   ---------- //stargazers_count = o derslerden kaç tane var //total=kullanılan diller
+
     if (!language) return total;
     if (!total[language]) {
       total[language] = { label: language, value: 1, stars: stargazers_count };
     } else {
       total[language] = {
         ...total[language],
-        value: total[language].value + 1,
+        value: total[language].value + 1, //burada eğer +1 yapmazsak languages'ları eşit şekilde böler hepsine aynı oran girer örneğin %20 gibi.
         stars: total[language].stars + stargazers_count,
       };
     }
